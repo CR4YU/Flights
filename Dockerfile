@@ -1,18 +1,12 @@
 FROM openjdk:11-jdk
 
-RUN apt-get update && \
-    apt-get clean && \
-    curl -sL https://deb.nodesource.com/setup_13.x | bash && \
-    apt-get install nodejs && \
-    mkdir /server && \
-    mkdir /app
-
 COPY flights-service/target/*.jar /server
-COPY flights-app/build /app/build
 COPY entrypoint.sh /
 
-RUN ["chmod", "+x", "/entrypoint.sh"]
-RUN ["npm", "install", "-g", "serve"]
+RUN apt-get update && \
+    apt-get clean && \
+    mkdir /server && \
+    chmod +x /entrypoint.sh
 
 EXPOSE 8080
 EXPOSE 5000
