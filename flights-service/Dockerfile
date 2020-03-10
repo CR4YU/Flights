@@ -1,6 +1,6 @@
 FROM openjdk:11-jdk
 
-COPY flights-service/target/*.jar /server/
+COPY target/*.jar /server/
 COPY entrypoint.sh /
 
 RUN apt-get update && \
