@@ -1,0 +1,7 @@
+region: us-east-1
+stacks:
+    app-stack:
+      template-url: stack.yml
+      parameters:
+        dockerImage: 566538398256.dkr.ecr.us-east-1.amazonaws.com/flights
+        dockerPortMapping: 8080:8080
