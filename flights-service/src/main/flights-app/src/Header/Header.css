@@ -1,0 +1,55 @@
+.Header {
+  background-color: #646c77;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: calc(8px + 2vmin);
+  color: white;
+  padding: 5vh;
+}
+
+.Logo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+.Title {
+  height: 10vmin;
+}
+
+.Header-title {
+  width: 80vw;
+}
+
+.Header-functions {
+  width: 20vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Header-functions a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.Header-function-separator {
+  background: #d6d6d6;
+  width: 1px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
