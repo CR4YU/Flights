@@ -1,0 +1,37 @@
+.Airports {
+  /*background: yellow;*/
+  font-size: calc(8px + 1vmin);
+  width: 50vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1vw;
+}
+
+.Airports-select {
+  /*background: #61dafb;*/
+  width: 40vw;
+  max-height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Select {
+  width: 15vw;
+}
+
+.Icon-Direction {
+  height: 10vmin;
+  max-height: 7vh;
+  min-height: 5vh;
+}
+
+.Icon-Search {
+  height: 10vmin;
+  max-height: 7vh;
+  min-height: 5vh;
+  cursor: pointer;
+}
