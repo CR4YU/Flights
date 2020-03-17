@@ -1,21 +1,21 @@
 .Header {
-  background-color: #646c77;
-  height: 5vh;
+  background-color: #1818a0;
+  height: 4vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: calc(8px + 2vmin);
+  font-size: calc(7px + 1.5vmin);
   color: white;
-  padding: 5vh;
+  padding: 1em;
 }
 
 .Logo {
-  height: 10vmin;
+  height: 5vmin;
   pointer-events: none;
 }
 
 .Title {
-  height: 10vmin;
+  height: 7vmin;
 }
 
 .Header-title {
