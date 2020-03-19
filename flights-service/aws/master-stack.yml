@@ -4,4 +4,6 @@ stacks:
       template-url: stack.yml
       parameters:
         dockerImage: 566538398256.dkr.ecr.us-east-1.amazonaws.com/flights
+        version: '1.00'
         dockerPortMapping: 8080:8080
+        time: ''

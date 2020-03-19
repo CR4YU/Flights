@@ -6,6 +6,10 @@ Parameters:
     Type: String
   dockerPortMapping:
     Type: String
+  time:
+    Type: String
+  version:
+    Type: String
 
 Resources:
 
@@ -55,16 +59,20 @@ Resources:
   DeployAppLaunchConfig:
       Type: AWS::AutoScaling::LaunchConfiguration
       Properties:
-        ImageId: ami-0e9fdc42464552f08
+        ImageId: ami-0ff5b3fcd50757b87
         InstanceType: t2.micro
+        IamInstanceProfile: ec2-web-app-role
         KeyName: flights-access
         SecurityGroups:
           - sg-0b75d6fdb83a9a55b
         UserData:
-          Fn::Base64:
-            Fn::Sub: |
-              #!/bin/bash -xe
-              /run_container.sh ${dockerImage} ${dockerPortMapping}
+          "Fn::Base64": !Sub |
+            #!/bin/bash
+            TIMESTAMP="${time}"
+            IMAGE="${dockerImage}"
+            VER="${version}"
+            PORTS="${dockerPortMapping}"
+            /run_container.sh $IMAGE $VER $PORTS
 
   DeployAppASG:
     Type: AWS::AutoScaling::AutoScalingGroup
@@ -82,32 +90,6 @@ Resources:
         - Key: env
           Value: dev
           PropagateAtLaunch: True
-
-  EndpointEcrApi:
-    Type: AWS::EC2::VPCEndpoint
-    Properties:
-      VpcEndpointType: Interface
-      PrivateDnsEnabled: True
-      SubnetIds:
-        - subnet-0844e8ddb642e360f
-        - subnet-0f8f952fa7298e790
-      SecurityGroupIds:
-        - sg-0b75d6fdb83a9a55b
-      ServiceName: com.amazonaws.us-east-1.ecr.api
-      VpcId: vpc-0b22f2c3b58b5f60a
-
-  EndpointEcrDkr:
-    Type: AWS::EC2::VPCEndpoint
-    Properties:
-      VpcEndpointType: Interface
-      PrivateDnsEnabled: True
-      SubnetIds:
-        - subnet-0844e8ddb642e360f
-        - subnet-0f8f952fa7298e790
-      SecurityGroupIds:
-        - sg-0b75d6fdb83a9a55b
-      ServiceName: com.amazonaws.us-east-1.ecr.dkr
-      VpcId: vpc-0b22f2c3b58b5f60a
 
 Outputs:
   ProjectFlights:
