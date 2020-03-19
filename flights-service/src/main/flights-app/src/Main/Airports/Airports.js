@@ -7,18 +7,24 @@ import icon_search from "./icon-search.png"
 class Airports extends React.Component {
 
     state = {
+        airports: [],
         from: "",
         to: ""
     };
 
-    options = [
-        { value: 'Berlin', label: 'Berlin' },
-        { value: 'London', label: 'London' }
-    ]
+
 
     constructor() {
         super()
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    async fetchAirports() {
+        const response = await fetch('/api/airports')
+        const json = await response.json()
+        const airports = json.map(airport => { return {value: airport.name, label: airport.name}})
+        this.setState({airports: airports})
+
     }
 
     handleChange = (event) => {
@@ -27,7 +33,9 @@ class Airports extends React.Component {
         })
     }
 
-
+    componentDidMount = () => {
+        this.fetchAirports()
+    }
 
     render = () => {
         return (
@@ -46,7 +54,7 @@ class Airports extends React.Component {
         return (
             <Select
                 className="Select"
-                options={this.options}
+                options={this.state.airports}
                 onChange={(val)=> {this.handleChange({target: { name:direction, value: val.value }})}}
                 placeholder="Select airport"
             />
