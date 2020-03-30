@@ -1,5 +1,6 @@
 package com.example.flightsservice.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,8 +12,10 @@ public class Airport {
     @GeneratedValue
     private Long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "city")
     private String city;
 
     public Long getId() {
@@ -37,5 +40,14 @@ public class Airport {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }
