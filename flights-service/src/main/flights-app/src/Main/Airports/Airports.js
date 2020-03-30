@@ -8,21 +8,20 @@ class Airports extends React.Component {
 
     state = {
         airports: [],
-        from: "",
-        to: ""
+        origin: '',
+        destination: ''
     };
 
-
-
-    constructor() {
-        super()
+    constructor(props) {
+        super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSearchFlights = () => props.handleSearchFlights(this.state.origin, this.state.destination)
     }
 
     async fetchAirports() {
-        const response = await fetch('/api/airports')
-        const json = await response.json()
-        const airports = json.map(airport => { return {value: airport.name, label: airport.name}})
+        const response = await fetch('/api/airports');
+        const json = await response.json();
+        const airports = json.map(airport => { return {value: airport.name, label: airport.name}});
         this.setState({airports: airports})
 
     }
@@ -31,24 +30,24 @@ class Airports extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-    }
+    };
 
     componentDidMount = () => {
         this.fetchAirports()
-    }
+    };
 
     render = () => {
         return (
             <div className="Airports">
                 <div className="Airports-select">
-                    {this.select('from')}
+                    {this.select('origin')}
                     <img src={icon_right} className="Icon-Direction" alt="IconDirection" />
-                    {this.select('to')}
+                    {this.select('destination')}
                 </div>
-                <img src={icon_search} className="Icon-Search" alt="IconSearch" />
+                <img src={icon_search} className="Icon-Search" alt="IconSearch" onClick={this.handleSearchFlights}/>
             </div>
         );
-    }
+    };
 
     select = (direction) => {
         return (
