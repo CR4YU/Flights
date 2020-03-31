@@ -14,6 +14,8 @@ CREATE TABLE flight (
                         destination_id INT NOT NULL,
                         departure DATETIME NOT NULL,
                         arrival DATETIME NOT NULL,
+                        ticket_price DOUBLE NOT NULL,
+                        currency VARCHAR(10) NOT NULL,
                         CONSTRAINT fk_origin_id FOREIGN KEY(origin_id) REFERENCES airport(id),
                         CONSTRAINT fk_destination_id FOREIGN KEY(destination_id) REFERENCES airport(id)
 );
@@ -36,15 +38,15 @@ INSERT INTO airport (name, city) VALUES
     ('Olsztyn-Mazury', 'Olsztyn'),
     ('Zielona Gora', 'Zielona Gora');
 
-INSERT INTO flight (origin_id, destination_id, departure, arrival) VALUES
-    (1, 2, parsedatetime('17-09-2020 23:05', 'dd-MM-yyyy hh:mm'), parsedatetime('18-09-2020 00:30', 'dd-MM-yyyy hh:mm')),
-    (1, 2, parsedatetime('18-09-2020 18:47', 'dd-MM-yyyy hh:mm'), parsedatetime('18-09-2020 19:47', 'dd-MM-yyyy hh:mm')),
-    (1, 2, parsedatetime('17-09-2020 6:30', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2020 7:20', 'dd-MM-yyyy hh:mm')),
-    (1, 2, parsedatetime('17-09-2020 15:05', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2020 16:30', 'dd-MM-yyyy hh:mm')),
+INSERT INTO flight (origin_id, destination_id, departure, arrival, ticket_price, currency) VALUES
+    (1, 2, parsedatetime('17-09-2020 23:05', 'dd-MM-yyyy hh:mm'), parsedatetime('18-09-2020 00:30', 'dd-MM-yyyy hh:mm'), 10.00, 'EUR'),
+    (1, 2, parsedatetime('18-09-2020 18:47', 'dd-MM-yyyy hh:mm'), parsedatetime('18-09-2020 19:47', 'dd-MM-yyyy hh:mm'), 9.00, 'EUR'),
+    (1, 2, parsedatetime('17-09-2020 6:30', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2020 7:20', 'dd-MM-yyyy hh:mm'), 11.00, 'EUR'),
+    (1, 2, parsedatetime('17-09-2020 15:05', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2020 16:30', 'dd-MM-yyyy hh:mm'), 10.00, 'EUR'),
 
-    (11, 3, parsedatetime('17-09-2020 23:05', 'dd-MM-yyyy hh:mm'), parsedatetime('18-09-2020 00:30', 'dd-MM-yyyy hh:mm')),
-    (11, 3, parsedatetime('18-09-2020 18:47', 'dd-MM-yyyy hh:mm'), parsedatetime('18-09-2020 19:47', 'dd-MM-yyyy hh:mm')),
-    (11, 3, parsedatetime('17-09-2020 6:30', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2020 7:20', 'dd-MM-yyyy hh:mm')),
-    (11, 3, parsedatetime('17-09-2020 15:05', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2020 16:30', 'dd-MM-yyyy hh:mm')),
+    (11, 3, parsedatetime('17-09-2020 23:05', 'dd-MM-yyyy hh:mm'), parsedatetime('18-09-2020 00:30', 'dd-MM-yyyy hh:mm'), 10.00, 'EUR'),
+    (11, 3, parsedatetime('18-09-2020 18:47', 'dd-MM-yyyy hh:mm'), parsedatetime('18-09-2020 19:47', 'dd-MM-yyyy hh:mm'), 10.00, 'EUR'),
+    (11, 3, parsedatetime('17-09-2020 6:30', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2020 7:20', 'dd-MM-yyyy hh:mm'), 10.00, 'EUR'),
+    (11, 3, parsedatetime('17-09-2020 15:05', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2020 16:30', 'dd-MM-yyyy hh:mm'), 10.00, 'EUR'),
 
-    (5, 7, parsedatetime('17-09-2012 18:47', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2012 19:47', 'dd-MM-yyyy hh:mm'));
+    (5, 14, parsedatetime('17-09-2012 18:47', 'dd-MM-yyyy hh:mm'), parsedatetime('17-09-2012 19:47', 'dd-MM-yyyy hh:mm'), 10.00, 'EUR');
