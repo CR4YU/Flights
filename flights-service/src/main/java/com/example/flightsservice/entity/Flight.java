@@ -24,6 +24,12 @@ public class Flight {
     @Column(name = "arrival")
     private Instant arrival;
 
+    @Column(name = "ticket_price", precision = 10, scale = 2)
+    private Double ticketPrice;
+
+    @Column(name = "currency")
+    private String currency;
+
     public Long getId() {
         return id;
     }
@@ -62,5 +68,21 @@ public class Flight {
 
     public void setArrival(Instant arrival) {
         this.arrival = arrival;
+    }
+
+    public Double getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(Double ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }
