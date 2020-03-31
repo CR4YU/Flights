@@ -39,13 +39,18 @@ class Airports extends React.Component {
     render = () => {
         return (
             <div className="Airports">
-                <div className="Airports-select">
-                    {this.select('origin')}
-                    <img src={icon_right} className="Icon-Direction" alt="IconDirection" />
-                    {this.select('destination')}
+                <h2>SEARCH YOUR FLIGHT</h2>
+                <div className="Airports-select-search">
+
+                    <div className="Airports-select">
+                        {this.select('origin')}
+                        <img src={icon_right} className="Icon-Direction" alt="IconDirection" />
+                        {this.select('destination')}
+                    </div>
+                    <button className="Button-search" onClick={this.handleSearchFlights}>Search</button>
                 </div>
-                <img src={icon_search} className="Icon-Search" alt="IconSearch" onClick={this.handleSearchFlights}/>
             </div>
+
         );
     };
 

@@ -1,6 +1,22 @@
 .Main {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: #eeeff2;
+}
+
+.Middle-content {
   flex-direction: column;
   align-items: center;
-  background: #eeeff2;
+  width: 700px;
+}
+
+.Left-bar {
+}
+
+.Right-bar {
+}
+
+h2 {
+  font-family: 'Lato', sans-serif;
 }

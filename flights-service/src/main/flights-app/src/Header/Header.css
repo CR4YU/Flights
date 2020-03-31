@@ -1,31 +1,31 @@
 .Header {
   background-color: #1818a0;
-  height: 4vh;
+  height: 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: calc(7px + 1.5vmin);
+  justify-content: space-between;
+  font-size: 15px;
   color: white;
   padding: 1em;
 }
 
 .Logo {
-  height: 5vmin;
+  height: 40px;
   pointer-events: none;
 }
 
 .Title {
-  height: 7vmin;
+  height: 40px;
 }
 
 .Header-title {
-  width: 80vw;
 }
 
 .Header-functions {
-  width: 20vw;
+  width: 120px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .Header-functions a {

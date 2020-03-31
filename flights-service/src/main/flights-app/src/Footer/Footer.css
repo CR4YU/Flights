@@ -1,5 +1,24 @@
 .Footer {
+  height: 60px;
+  font-size: 10px;
+  color: #555555;
+}
 
+.Footer-upper-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Footer-links {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+a {
+  color: dodgerblue;
 }
 
 hr {

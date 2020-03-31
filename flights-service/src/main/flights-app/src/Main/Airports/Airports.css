@@ -1,37 +1,48 @@
 .Airports {
-  /*background: yellow;*/
-  font-size: calc(8px + 1vmin);
-  width: 50vw;
-  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.Airports-select-search {
+  width: 100%;
+  font-size: 12px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  padding: 1vw;
+  padding-bottom: 10px;
 }
 
 .Airports-select {
-  /*background: #61dafb;*/
-  width: 40vw;
-  max-height: 10vh;
+  width: 80%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
 }
 
 .Select {
-  width: 15vw;
+  width: 250px;
+  cursor: pointer;
 }
 
 .Icon-Direction {
-  height: 10vmin;
-  max-height: 7vh;
-  min-height: 5vh;
+  height: 30px;
 }
 
-.Icon-Search {
-  height: 10vmin;
-  max-height: 7vh;
-  min-height: 5vh;
+.Button-search {
+  background-color: hsl(0,0%,100%);
+  border-color: hsl(0,0%,80%);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  color: hsl(215, 9%, 43%);
+  width: 120px;
+  height: 35px;
   cursor: pointer;
+}
+
+.Button-search:hover {
+  background: #f8f8f8;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 }

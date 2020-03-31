@@ -29,6 +29,7 @@ class Flights extends React.Component {
 
     componentDidUpdate = (prevProps, prevState, snapshot) => {
         if (prevProps.origin !== this.props.origin || prevProps.destination !== this.props.destination) {
+            this.setState({origin: this.props.origin, destination: this.props.destination})
             this.fetchFlights(this.props.origin, this.props.destination);
         }
     };
@@ -36,7 +37,7 @@ class Flights extends React.Component {
     render = () => {
         return (
             <div className="Flights">
-                {this.flights()}
+                {this.state.flights.length? this.flights() : (this.state.origin && this.state.destination) ? this.noFlights() : ""}
             </div>
         );
     };
@@ -49,14 +50,11 @@ class Flights extends React.Component {
     timeDifference(datetime1, datetime2) {
         const date1 = new Date(datetime1);
         const date2 = new Date(datetime2);
-        const utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate(), date1.getHours(), date1.getMinutes());
-        const utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate(), date2.getHours(), date2.getMinutes());
         const diff = Math.abs(date2 - date1);
         const h = Math.floor(diff/(1000*60*60));
-
         const m = Math.floor(diff/(1000*60)) % 60;
 
-        return ((h == 0)? '':h + 'h')+ ' ' +((m == 0)?'': m + 'm');
+        return ((h === 0)? '':h + 'h')+ ' ' +((m === 0)?'': m + 'm');
     }
 
     formattedDate(datetime) {
@@ -69,7 +67,10 @@ class Flights extends React.Component {
     flights = () => {
         return this.state.flights.map(flight =>
             <div className="Flight">
-                <div className="Date">{this.formattedDate(flight.departure)}</div>
+                <div className="Date-price">
+                    <div>{this.formattedDate(flight.departure)}</div>
+                    <div>{flight.ticketPrice} {flight.currency}</div>
+                </div>
                 <div className="Departure">
                     <div className="Departure-time">{this.timeFromDate(flight.departure)}</div>
                     <div className="Departure-airport">{flight.origin.name}</div>
@@ -83,6 +84,10 @@ class Flights extends React.Component {
                 </div>
             </div>
         )
+    }
+
+    noFlights = () => {
+        return <div className="No-flights">No flights have been found :(</div>
     }
 
 }
