@@ -2,20 +2,16 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: #eeeff2;
+  background-image: url("plane-interior.jpg");
+  background-size: cover;
 }
 
 .Middle-content {
   flex-direction: column;
   align-items: center;
-  width: 700px;
+  flex-basis: 700px;
 }
 
-.Left-bar {
-}
-
-.Right-bar {
-}
 
 h2 {
   font-family: 'Lato', sans-serif;

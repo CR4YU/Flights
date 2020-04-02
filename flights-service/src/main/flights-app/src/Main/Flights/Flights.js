@@ -64,22 +64,26 @@ class Flights extends React.Component {
         return date.getDate() + ' ' + monthNames[date.getMonth()];
     }
 
+    formattedPriceFromFlight(flight) {
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: flight.currency }).format(flight.ticketPrice)
+    }
+
     flights = () => {
         return this.state.flights.map(flight =>
             <div className="Flight">
                 <div className="Date-price">
-                    <div>{this.formattedDate(flight.departure)}</div>
-                    <div>{flight.ticketPrice} {flight.currency}</div>
+                    <div className="Date">{this.formattedDate(flight.departure)}</div>
+                    <div className="Price">{this.formattedPriceFromFlight(flight)}</div>
                 </div>
                 <div className="Departure">
-                    <div className="Departure-time">{this.timeFromDate(flight.departure)}</div>
+                    <div className="Departure-time"><img src={icon_takeoff} className="Plane-icon-small" alt="icon takeoff"/>{this.timeFromDate(flight.departure)}</div>
                     <div className="Departure-airport">{flight.origin.name}</div>
                 </div>
                 <img src={icon_takeoff} className="Plane-icon" alt="icon takeoff"/>
                 <div className="Flight-time">{this.timeDifference(flight.departure, flight.arrival)}</div>
                 <img src={icon_land} className="Plane-icon" alt="icon land"/>
                 <div className="Departure">
-                    <div className="Departure-time">{this.timeFromDate(flight.arrival)}</div>
+                    <div className="Departure-time"><img src={icon_land} className="Plane-icon-small" alt="icon land"/>{this.timeFromDate(flight.arrival)}</div>
                     <div className="Departure-airport">{flight.destination.name}</div>
                 </div>
             </div>

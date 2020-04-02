@@ -22,12 +22,10 @@ class Main extends React.Component {
     render = () => {
         return (
             <div className="Main">
-                <div className="Left-bar"></div>
                 <div className="Middle-content">
                     <Airports handleSearchFlights={this.handleSearchFlights}/>
                     <Flights origin={this.state.origin} destination={this.state.destination}/>
                 </div>
-                <div className="Right-bar"></div>
             </div>
         );
     }

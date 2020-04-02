@@ -1,4 +1,8 @@
+
+
+
 .Header {
+
   background-color: #1818a0;
   height: 40px;
   display: flex;
@@ -51,5 +55,12 @@
 @media (prefers-reduced-motion: no-preference) {
   .Logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+@media (max-width: 800px) {
+  .Title {
+    visibility: hidden;
+    height: 0;
+    width: 0;
   }
 }

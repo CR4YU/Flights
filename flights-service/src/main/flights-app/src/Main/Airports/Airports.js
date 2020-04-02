@@ -2,7 +2,6 @@ import React from 'react';
 import './Airports.css';
 import Select from 'react-select'
 import icon_right from "./icon-right2.png";
-import icon_search from "./icon-search.png"
 
 class Airports extends React.Component {
 
@@ -39,16 +38,16 @@ class Airports extends React.Component {
     render = () => {
         return (
             <div className="Airports">
-                <h2>SEARCH YOUR FLIGHT</h2>
-                <div className="Airports-select-search">
-
+                <h2>FLIGHT FINDER</h2>
                     <div className="Airports-select">
+
                         {this.select('origin')}
                         <img src={icon_right} className="Icon-Direction" alt="IconDirection" />
+
                         {this.select('destination')}
+
+                        <button className="Button-search" onClick={this.handleSearchFlights}>Search</button>
                     </div>
-                    <button className="Button-search" onClick={this.handleSearchFlights}>Search</button>
-                </div>
             </div>
 
         );
@@ -60,7 +59,7 @@ class Airports extends React.Component {
                 className="Select"
                 options={this.state.airports}
                 onChange={(val)=> {this.handleChange({target: { name:direction, value: val.value }})}}
-                placeholder="Select airport"
+                placeholder={direction}
             />
         )
     }
