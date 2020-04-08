@@ -1,34 +1,27 @@
 import React from 'react';
+import {
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 import './Main.css';
-import Airports from "./Airports/Airports";
-import Flights from "./Flights/Flights";
+import Finder from "./Finder/Finder"
+import SelectedFlight from "./SelectedFlight/SelectedFlight";
 
 class Main extends React.Component {
-
-    state = {
-        origin: '',
-        destination: ''
-    };
-
-    constructor() {
-        super();
-        this.handleSearchFlights = this.handleSearchFlights.bind(this);
-    }
-
-    handleSearchFlights = (origin, destination) => {
-        this.setState({origin: origin, destination: destination});
-    };
 
     render = () => {
         return (
             <div className="Main">
                 <div className="Middle-content">
-                    <Airports handleSearchFlights={this.handleSearchFlights}/>
-                    <Flights origin={this.state.origin} destination={this.state.destination}/>
+                    <Route path="/flight/:id" exact component={SelectedFlight}/>
+                    <Route path="/" exact component={Finder}/>
                 </div>
             </div>
         );
     }
+
+
 }
 
 export default Main;

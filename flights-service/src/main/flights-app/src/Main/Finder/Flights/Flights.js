@@ -1,16 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './Flights.css'
 import icon_takeoff from "./plane-takeoff.png"
 import icon_land from "./plane-land.png"
+import axios from "axios";
 
 class Flights extends React.Component {
 
     state = {
-        origin: '',
-        destination: '',
         flights: []
     };
-
 
     constructor(props) {
         super(props);
@@ -18,8 +17,8 @@ class Flights extends React.Component {
     }
 
     async fetchFlights(origin, destination) {
-        const response = await fetch(`/api/flights/find?orig=${origin}&dest=${destination}`);
-        const json = await response.json();
+        const response = await axios.get(`/api/flights/find?orig=${origin}&dest=${destination}`);
+        const json = response.data;
         this.setState({flights: json})
     }
 
@@ -27,9 +26,8 @@ class Flights extends React.Component {
 
     };
 
-    componentDidUpdate = (prevProps, prevState, snapshot) => {
+    componentDidUpdate = (prevProps, prevState) => {
         if (prevProps.origin !== this.props.origin || prevProps.destination !== this.props.destination) {
-            this.setState({origin: this.props.origin, destination: this.props.destination})
             this.fetchFlights(this.props.origin, this.props.destination);
         }
     };
@@ -37,7 +35,7 @@ class Flights extends React.Component {
     render = () => {
         return (
             <div className="Flights">
-                {this.state.flights.length? this.flights() : (this.state.origin && this.state.destination) ? this.noFlights() : ""}
+                {this.state.flights.length? this.flights() : (this.props.origin && this.props.destination) ? this.noFlights() : ""}
             </div>
         );
     };
@@ -58,10 +56,11 @@ class Flights extends React.Component {
     }
 
     formattedDate(datetime) {
-        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
         const date = new Date(datetime);
-        return date.getDate() + ' ' + monthNames[date.getMonth()];
+        return weekDays[date.getDay()] + ', ' + date.getDate() + ' ' + months[date.getMonth()];
     }
 
     formattedPriceFromFlight(flight) {
@@ -70,25 +69,27 @@ class Flights extends React.Component {
 
     flights = () => {
         return this.state.flights.map(flight =>
-            <div className="Flight">
-                <div className="Date-price">
-                    <div className="Date">{this.formattedDate(flight.departure)}</div>
-                    <div className="Price">{this.formattedPriceFromFlight(flight)}</div>
-                </div>
+            <Link to={"/flight/" + flight.id} key={flight.id} className="Flight">
                 <div className="Departure">
+                    <div className="Date">{this.formattedDate(flight.departure)}</div>
                     <div className="Departure-time"><img src={icon_takeoff} className="Plane-icon-small" alt="icon takeoff"/>{this.timeFromDate(flight.departure)}</div>
                     <div className="Departure-airport">{flight.origin.name}</div>
                 </div>
-                <img src={icon_takeoff} className="Plane-icon" alt="icon takeoff"/>
-                <div className="Flight-time">{this.timeDifference(flight.departure, flight.arrival)}</div>
-                <img src={icon_land} className="Plane-icon" alt="icon land"/>
+                <div className="Flight-path">
+                    <img src={icon_takeoff} className="Plane-icon" alt="icon takeoff"/>
+                    <div className="Flight-time">{this.timeDifference(flight.departure, flight.arrival)}</div>
+                    <img src={icon_land} className="Plane-icon" alt="icon land"/>
+                </div>
                 <div className="Departure">
+                    <div className="Date">{this.formattedDate(flight.arrival)}</div>
                     <div className="Departure-time"><img src={icon_land} className="Plane-icon-small" alt="icon land"/>{this.timeFromDate(flight.arrival)}</div>
                     <div className="Departure-airport">{flight.destination.name}</div>
-                </div>
-            </div>
+                    </div>
+                    <div className="Price">{this.formattedPriceFromFlight(flight)}</div>
+
+            </Link>
         )
-    }
+    };
 
     noFlights = () => {
         return <div className="No-flights">No flights have been found :(</div>

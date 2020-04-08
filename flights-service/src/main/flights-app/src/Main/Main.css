@@ -4,6 +4,7 @@
   justify-content: center;
   background-image: url("plane-interior.jpg");
   background-size: cover;
+  min-height: 500px;
 }
 
 .Middle-content {

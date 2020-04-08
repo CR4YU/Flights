@@ -1,7 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 import './Airports.css';
 import Select from 'react-select'
-import icon_right from "./icon-right2.png";
 
 class Airports extends React.Component {
 
@@ -18,8 +18,8 @@ class Airports extends React.Component {
     }
 
     async fetchAirports() {
-        const response = await fetch('/api/airports');
-        const json = await response.json();
+        const response = await axios.get('/api/airports');
+        const json = response.data;
         const airports = json.map(airport => { return {value: airport.name, label: airport.name}});
         this.setState({airports: airports})
 
@@ -40,13 +40,10 @@ class Airports extends React.Component {
             <div className="Airports">
                 <h2>FLIGHT FINDER</h2>
                     <div className="Airports-select">
-
                         {this.select('origin')}
-                        <img src={icon_right} className="Icon-Direction" alt="IconDirection" />
-
+                        <span className="direction">&#x27A4;</span>
                         {this.select('destination')}
-
-                        <button className="Button-search" onClick={this.handleSearchFlights}>Search</button>
+                        <button className="Button-search" onClick={this.handleSearchFlights}>SEARCH</button>
                     </div>
             </div>
 
@@ -59,7 +56,7 @@ class Airports extends React.Component {
                 className="Select"
                 options={this.state.airports}
                 onChange={(val)=> {this.handleChange({target: { name:direction, value: val.value }})}}
-                placeholder={direction}
+                placeholder={direction.replace(/^\w/, c => c.toUpperCase())}
             />
         )
     }

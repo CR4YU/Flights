@@ -2,37 +2,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
  }
 
+
 .Flight {
-  background: #eeeff2;
-  height: 80px;
+  /* No Link styling */
+  color:inherit;
+  text-decoration: none;
+  outline: none;
+  /*******************/
+
+  background: #f6f7fa;
+  height: 100px;
   width: 100%;
-  border-radius: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 10px 15px;
+  color: #434343;
+}
+
+.Flight-path {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
 }
 
 .No-flights {
   color: #eeeff2;
-    text-align: center;
-    padding: 30px;
-  font-size: 20px;
+  text-align: center;
+  padding: 30px;
+  font-size: 30px;
 }
 
-.Date-price {
-  height: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  font-size: 20px
-}
 
 .Flight:hover {
   background: #f9f9f9;
@@ -48,15 +55,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  width: 150px;
+  height: 80px;
 }
 
 .Departure-time {
   display: flex;
   justify-content: space-between;
+  font-weight: 700;
   font-size: 30px;
 }
 
 .Departure-airport {
+  font-size: 10px;
   text-align: center;
 }
 
@@ -72,18 +84,29 @@
 .Flight-time {
   border-bottom: darkgrey;
   border-bottom-style: dotted;
-  width: 100px;
+  width: 100%;
   text-align: center;
+  font-size: 12px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
   .Flights {
+    padding: 0;
+    margin: 1px;
+  }
 
+  .Flight {
+    margin-bottom: 1px;
   }
 
   .Flight-time {
-    width: 70px;
+
   }
+
+  .Flight-path {
+    width: 30%;
+  }
+
 
   .Plane-icon-small {
     display: block;
