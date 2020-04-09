@@ -5,12 +5,11 @@ import com.example.flightsservice.entity.Flight;
 import com.example.flightsservice.service.AirportService;
 import com.example.flightsservice.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -38,5 +37,12 @@ public class ApiController {
     @GetMapping("/flights/find")
     public List<Flight> flightsByAirports(@RequestParam String orig, @RequestParam String dest) {
         return flightService.findByAirports(orig, dest);
+    }
+
+    @GetMapping("/flights/{id}")
+    public ResponseEntity<Flight> flightById(@PathVariable Long id) {
+        return flightService.findById(id)
+                .map(flight -> ResponseEntity.ok().body(flight))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

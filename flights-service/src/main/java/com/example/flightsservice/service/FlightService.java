@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlightService {
@@ -27,5 +28,9 @@ public class FlightService {
         Airport destinationAirport = airportRepository.findByName(dest);
 
         return flightRepository.findByOriginAndDestinationOrderByDepartureAsc(originAirport, destinationAirport);
+    }
+
+    public Optional<Flight> findById(Long id) {
+        return flightRepository.findById(id);
     }
 }
