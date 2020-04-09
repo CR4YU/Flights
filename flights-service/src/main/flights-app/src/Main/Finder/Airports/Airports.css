@@ -6,14 +6,9 @@
     border-radius: 5px;
 }
 
-h2 {
-    font-family: P22 Underground Pro,sans-serif;
-    font-size: 30px;
-    font-weight: 100;
-    color: #1818a0;
-}
 
-.Airports-select {
+
+.Airports .Airports-select {
     flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
@@ -21,16 +16,16 @@ h2 {
     align-items: center;
 }
 
-.Select {
+.Airports .Select {
     width: 220px;
     cursor: pointer;
 }
 
-.direction {
+.Airports .direction {
     font-size: 20px;
 }
 
-.Button-search {
+.Airports .Button-search {
     font-size: 17px;
     background-color: hsl(319, 73%, 52%);
     border-radius: 4px;
@@ -42,7 +37,7 @@ h2 {
     cursor: pointer;
 }
 
-.Button-search:hover {
+.Airports .Button-search:hover {
     background: #c34fa4;
 }
 
@@ -51,24 +46,24 @@ h2 {
         align-items: center;
     }
 
-    .Airports-select {
+    .Airports .Airports-select {
         width: 100%;
         display: flex;
         flex-direction: column;
         font-size: 20px;
     }
 
-    .Select {
+    .Airports .Select {
         width: 100%;
     }
 
-    .Button-search {
+    .Airports .Button-search {
         font-size: 20px;
         margin-top: 10px;
         width: 100%;
     }
 
-    .direction {
+    .Airports .direction {
         display: none;
     }
 

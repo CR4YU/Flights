@@ -4,24 +4,24 @@
   color: #555555;
 }
 
-.Footer-upper-row {
+.Footer .Footer-upper-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.Footer-links {
+.Footer .Footer-links {
   width: 40%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-a {
+.Footer a {
   color: dodgerblue;
 }
 
-hr {
+.Footer hr {
   margin: 0;
   padding: 0;
 }

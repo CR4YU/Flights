@@ -1,8 +1,4 @@
-
-
-
 .Header {
-
   background-color: #1818a0;
   height: 40px;
   display: flex;
@@ -14,31 +10,31 @@
   padding: 1em;
 }
 
-.Logo {
+.Header .Logo {
   height: 40px;
   pointer-events: none;
 }
 
-.Title {
+.Header .Title {
   height: 40px;
 }
 
-.Header-title {
+.Header .Header-title {
 }
 
-.Header-functions {
+.Header .Header-functions {
   width: 120px;
   display: flex;
   justify-content: space-between;
 }
 
-.Header-functions a {
+.Header .Header-functions a {
   cursor: pointer;
   text-decoration: none;
   color: white;
 }
 
-.Header-function-separator {
+.Header .Header-function-separator {
   background: #d6d6d6;
   width: 1px;
 }
@@ -53,12 +49,12 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .Logo {
+  .Header .Logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 @media (max-width: 800px) {
-  .Title {
+  .Header .Title {
     visibility: hidden;
     height: 0;
     width: 0;

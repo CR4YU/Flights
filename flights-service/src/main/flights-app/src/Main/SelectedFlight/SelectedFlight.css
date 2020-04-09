@@ -1,0 +1,109 @@
+.Selected-flight {
+    background: #f6f7fa;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 15px;
+}
+
+
+.Selected-flight .Flight {
+    background: #f9f9f9;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: #434343;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+.Selected-flight .Flight-path {
+    color: #979797;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+}
+
+
+.Selected-flight .Departure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+    height: 80px;
+}
+
+.Selected-flight .Departure-time {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.Selected-flight .Departure-airport {
+    color: #979797;
+    font-size: 10px;
+    text-align: center;
+}
+
+.Selected-flight .Plane-icon {
+    height: 60px;
+}
+
+.Selected-flight .Plane-icon-small {
+    display: none;
+    height: 30px;
+}
+
+.Selected-flight .Flight-time {
+    border-bottom: darkgrey;
+    border-bottom-style: dotted;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+
+
+.Selected-flight .bundles {
+    display: flex;
+}
+
+
+@media (max-width: 700px) {
+
+    .Selected-flight .Flight {
+        margin-bottom: 1px;
+    }
+
+
+    .Selected-flight .Flight-path {
+        width: 20%;
+    }
+
+
+    .Selected-flight .Plane-icon-small {
+        display: block;
+    }
+
+    .Selected-flight .Date-price {
+        font-size: 15px
+    }
+
+    .Selected-flight .Departure-time {
+
+    }
+
+    .Selected-flight .Plane-icon {
+        display: none;
+    }
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { formattedPriceFromFlight, timeDifference, formattedDate, timeFromDate } from './../../../utils/utils';
 import './Flights.css'
 import icon_takeoff from "./plane-takeoff.png"
 import icon_land from "./plane-land.png"
@@ -40,52 +41,26 @@ class Flights extends React.Component {
         );
     };
 
-    timeFromDate(datetime) {
-        const date = new Date(datetime);
-        return date.getHours() + ':' + (date.getMinutes() < 10?'0':'') + date.getMinutes();
-    }
-
-    timeDifference(datetime1, datetime2) {
-        const date1 = new Date(datetime1);
-        const date2 = new Date(datetime2);
-        const diff = Math.abs(date2 - date1);
-        const h = Math.floor(diff/(1000*60*60));
-        const m = Math.floor(diff/(1000*60)) % 60;
-
-        return ((h === 0)? '':h + 'h')+ ' ' +((m === 0)?'': m + 'm');
-    }
-
-    formattedDate(datetime) {
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
-        const date = new Date(datetime);
-        return weekDays[date.getDay()] + ', ' + date.getDate() + ' ' + months[date.getMonth()];
-    }
-
-    formattedPriceFromFlight(flight) {
-        return new Intl.NumberFormat('en-US', { style: 'currency', currency: flight.currency }).format(flight.ticketPrice)
-    }
 
     flights = () => {
         return this.state.flights.map(flight =>
             <Link to={"/flight/" + flight.id} key={flight.id} className="Flight">
                 <div className="Departure">
-                    <div className="Date">{this.formattedDate(flight.departure)}</div>
-                    <div className="Departure-time"><img src={icon_takeoff} className="Plane-icon-small" alt="icon takeoff"/>{this.timeFromDate(flight.departure)}</div>
+                    <div className="Date">{formattedDate(flight.departure)}</div>
+                    <div className="Departure-time"><img src={icon_takeoff} className="Plane-icon-small" alt="icon takeoff"/>{timeFromDate(flight.departure)}</div>
                     <div className="Departure-airport">{flight.origin.name}</div>
                 </div>
                 <div className="Flight-path">
                     <img src={icon_takeoff} className="Plane-icon" alt="icon takeoff"/>
-                    <div className="Flight-time">{this.timeDifference(flight.departure, flight.arrival)}</div>
+                    <div className="Flight-time">{timeDifference(flight.departure, flight.arrival)}</div>
                     <img src={icon_land} className="Plane-icon" alt="icon land"/>
                 </div>
                 <div className="Departure">
-                    <div className="Date">{this.formattedDate(flight.arrival)}</div>
-                    <div className="Departure-time"><img src={icon_land} className="Plane-icon-small" alt="icon land"/>{this.timeFromDate(flight.arrival)}</div>
+                    <div className="Date">{formattedDate(flight.arrival)}</div>
+                    <div className="Departure-time"><img src={icon_land} className="Plane-icon-small" alt="icon land"/>{timeFromDate(flight.arrival)}</div>
                     <div className="Departure-airport">{flight.destination.name}</div>
                     </div>
-                    <div className="Price">{this.formattedPriceFromFlight(flight)}</div>
+                    <div className="Price">{formattedPriceFromFlight(flight)}</div>
 
             </Link>
         )
