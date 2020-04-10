@@ -1,35 +1,27 @@
 .Selected-flight {
     background: #f6f7fa;
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
     width: 100%;
     padding: 10px 15px;
 }
 
-
 .Selected-flight .Flight {
-    background: #f9f9f9;
+    background: #ededed;
     height: 100px;
     width: 100%;
     display: flex;
+    box-sizing: border-box;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    padding: 10px 15px;
     color: #434343;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-
-.Selected-flight .Flight-path {
-    color: #979797;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 40%;
-}
 
 
 .Selected-flight .Departure {
@@ -39,6 +31,15 @@
     justify-content: space-between;
     width: 150px;
     height: 80px;
+}
+
+.Selected-flight .Flight-path {
+    color: #979797;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
 }
 
 .Selected-flight .Departure-time {
@@ -71,32 +72,110 @@
     font-size: 12px;
 }
 
-
-
-
 .Selected-flight .bundles {
     display: flex;
+
 }
+
+.Selected-flight .bundle {
+    background: #ededed;
+    flex:1 1 auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+    margin: 5px;
+    border-radius: 3px;
+    transition: all 400ms;
+}
+
+.Selected-flight .bundle:hover {
+    margin-top: 0;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Selected-flight .bundle-title {
+    color: white;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    background: #DE2BA5;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.Selected-flight .bundle-details {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.Selected-flight .bundle-features {
+    font-size: 12px;
+}
+
+.Selected-flight .bundle-features ul {
+    margin-left: 20px;
+    padding: 0;
+}
+
+.Selected-flight .bundle-features li {
+margin-bottom: 10px;
+}
+
+.Selected-flight .bundle-price {
+    align-self: center;
+    width: 90%;
+    padding: 15px 0;
+    text-align: center;
+    border: 2px #a0a0a0 solid;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #1818a0;
+}
+
+.Selected-flight .bundle-price:hover {
+    cursor: pointer;
+}
+
+
+.Selected-flight .Seats {
+    width: 50%;
+}
+
+.Selected-flight .seat {
+    background: chartreuse;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+.Selected-flight .seats-row {
+    display: flex;
+    flex-direction: row;
+}
+
+
 
 
 @media (max-width: 700px) {
 
     .Selected-flight .Flight {
-        margin-bottom: 1px;
+
     }
 
 
     .Selected-flight .Flight-path {
-        width: 20%;
+
     }
 
 
     .Selected-flight .Plane-icon-small {
         display: block;
-    }
-
-    .Selected-flight .Date-price {
-        font-size: 15px
     }
 
     .Selected-flight .Departure-time {
@@ -105,5 +184,9 @@
 
     .Selected-flight .Plane-icon {
         display: none;
+    }
+
+    .Selected-flight .bundles {
+        flex-direction: column;
     }
 }

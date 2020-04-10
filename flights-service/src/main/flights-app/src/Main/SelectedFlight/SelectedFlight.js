@@ -1,6 +1,8 @@
 import React from 'react';
 import { formattedPriceFromFlight, timeDifference, formattedDate, timeFromDate } from './../../utils/utils';
 import './SelectedFlight.css'
+import Bundles from './Bundles';
+import Seats from './Seats'
 import axios from "axios";
 import icon_takeoff from "../Finder/Flights/plane-takeoff.png";
 import icon_land from "../Finder/Flights/plane-land.png";
@@ -33,7 +35,7 @@ class SelectedFlight extends React.Component {
         if(flight) {
             return (
                 <div className="Selected-flight">
-                    <h2>YOUR FLIGHT TO LONDON</h2>
+                    <h2>YOUR FLIGHT TO {flight.destination.city.toUpperCase()}</h2>
                     <div className="Flight">
                         <div className="Departure">
                             <div className="Date">{formattedDate(flight.departure)}</div>
@@ -55,52 +57,8 @@ class SelectedFlight extends React.Component {
                         </div>
                     </div>
 
-
-
-
-
-                    <div className="bundles">
-                        <div className="bundle">
-                            <span className="bundle-title">PREMIUM</span>
-                            <div className="bundle-details">
-                                <div className="bundle-features">
-                                    <ul>
-                                        <li>Priority boarding</li>
-                                        <li>Additional hand baggage</li>
-                                        <li>Free drinks and meal on board</li>
-                                    </ul>
-                                </div>
-                                <span className="bundle-price"> EUR 10.00</span>
-                            </div>
-                        </div>
-                        <div className="bundle">
-                            <span className="bundle-title">PLUS</span>
-                            <div className="bundle-details">
-                                <div className="bundle-features">
-                                    <ul>
-                                        <li>Priority boarding</li>
-                                        <li>Additional hand baggage</li>
-                                        <li>Free drinks and meal on board</li>
-                                    </ul>
-                                </div>
-                                <span className="bundle-price"> EUR 10.00</span>
-                            </div>
-                        </div>
-                        <div className="bundle">
-                            <span className="bundle-title">BASIC</span>
-                            <div className="bundle-details">
-                                <div className="bundle-features">
-                                    <ul>
-                                        <li>Priority boarding</li>
-                                        <li>Additional hand baggage</li>
-                                        <li>Free drinks and meal on board</li>
-                                    </ul>
-                                </div>
-                                <span className="bundle-price"> EUR 10.00</span>
-                            </div>
-                        </div>
-                    </div>
-
+                    <Bundles flight={flight}/>
+                    <Seats />
 
                 </div>
             );
