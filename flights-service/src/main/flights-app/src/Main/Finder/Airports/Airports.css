@@ -3,7 +3,7 @@
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
     background: #f6f7fa;
     border-radius: 5px;
 }

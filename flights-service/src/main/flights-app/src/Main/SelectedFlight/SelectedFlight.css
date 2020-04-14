@@ -144,14 +144,45 @@ margin-bottom: 10px;
 
 
 .Selected-flight .Seats {
-    width: 50%;
+    width: 100%;
 }
 
 .Selected-flight .seat {
-    background: chartreuse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50px;
     height: 50px;
     margin: 5px;
+    border-radius: 5px;
+}
+
+.Selected-flight .seat-free {
+    background: #77df00;
+}
+
+.Selected-flight .seat-taken {
+    background: #a0a0a0;
+}
+
+.Selected-flight .seat-selected {
+    background: #DE2BA5;
+}
+
+.Selected-flight .window {
+    background: #7fc9ff;
+    width: 5px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.Selected-flight .seat-free:hover {
+   cursor: pointer;
+}
+
+.Selected-flight .seat-selected:hover {
+    cursor: pointer;
 }
 
 .Selected-flight .seats-row {
@@ -159,7 +190,14 @@ margin-bottom: 10px;
     flex-direction: row;
 }
 
-
+.Selected-flight .row-number {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
 
 
 @media (max-width: 700px) {

@@ -30,6 +30,16 @@ public class Flight {
     @Column(name = "currency")
     private String currency;
 
+    @Column(name = "num_seats_columns")
+    private Integer numSeatsColumns;
+
+    @Column(name = "num_seats_rows")
+    private Integer numSeatsRows;
+
+    @Column(name = "taken_seats")
+    private String takenSeats;
+
+
     public Long getId() {
         return id;
     }
@@ -84,5 +94,29 @@ public class Flight {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public Integer getNumSeatsColumns() {
+        return numSeatsColumns;
+    }
+
+    public void setNumSeatsColumns(Integer numSeatsColumns) {
+        this.numSeatsColumns = numSeatsColumns;
+    }
+
+    public Integer getNumSeatsRows() {
+        return numSeatsRows;
+    }
+
+    public void setNumSeatsRows(Integer numSeatsRows) {
+        this.numSeatsRows = numSeatsRows;
+    }
+
+    public String getTakenSeats() {
+        return takenSeats;
+    }
+
+    public void setTakenSeats(String takenSeats) {
+        this.takenSeats = takenSeats;
     }
 }
