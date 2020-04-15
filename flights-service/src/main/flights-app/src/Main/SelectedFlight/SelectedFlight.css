@@ -197,25 +197,50 @@ margin-bottom: 10px;
     margin: 5px;
 }
 
+.Selected-flight .summary {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Selected-flight .summary-detail-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.Selected-flight .button-continue {
+    font-size: 17px;
+    background-color: #DE2BA5;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    color: hsl(0, 0%, 100%);
+    width: 200px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.Selected-flight .summary-detail-right {
+    font-weight: bold;
+}
+
+.Selected-flight .button-continue:hover {
+    background: #c34fa4;
+}
+
 
 @media (max-width: 700px) {
-
-    .Selected-flight .Flight {
-
-    }
-
-
-    .Selected-flight .Flight-path {
-
-    }
-
 
     .Selected-flight .Plane-icon-small {
         display: block;
     }
 
-    .Selected-flight .Departure-time {
-
+    .Selected-flight .button-continue {
+        font-size: 20px;
+        width: 100%;
     }
 
     .Selected-flight .Plane-icon {
