@@ -7,7 +7,6 @@ class Seats extends React.Component {
     }
 
     switchSeatColor = (event) => {
-        console.log(event.target.classList);
         if (event.target.classList.contains("seat-free")) {
             event.target.classList.replace("seat-free", "seat-selected")
         } else {

@@ -11,6 +11,7 @@ class SelectedFlight extends React.Component {
 
     state = {
         flight: null,
+        bundle: '',
         selectedSeats: []
     };
 
@@ -32,6 +33,10 @@ class SelectedFlight extends React.Component {
         });
     }
 
+    bundleSelected(name, price) {
+
+    }
+
 
     async fetchFlight(id) {
         const response = await axios.get(`/api/flights/${id}`);
@@ -46,9 +51,9 @@ class SelectedFlight extends React.Component {
                 <div className="Selected-flight">
                     <h2>YOUR FLIGHT TO {flight.destination.city.toUpperCase()}</h2>
                     <Flight flight={flight}/>
-                    <Bundles flight={flight}/>
+                    <Bundles flight={flight} bundleSelected={this.bundleSelected}/>
                     <Seats flight={flight} handleSeatClicked={this.handleSeatClicked}/>
-
+                    <h3>Summary</h3>
                 </div>
             );
         } else {

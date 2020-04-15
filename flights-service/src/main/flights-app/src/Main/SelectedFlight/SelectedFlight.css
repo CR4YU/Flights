@@ -85,12 +85,15 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
     margin: 5px;
     border-radius: 3px;
-    transition: all 400ms;
 }
 
 .Selected-flight .bundle:hover {
-    margin-top: 0;
-    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.5), 0 8px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+.Selected-flight .bundle-selected {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.5), 0 8px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
 .Selected-flight .bundle-title {
@@ -137,11 +140,6 @@ margin-bottom: 10px;
     font-weight: bold;
     color: #1818a0;
 }
-
-.Selected-flight .bundle-price:hover {
-    cursor: pointer;
-}
-
 
 .Selected-flight .Seats {
     width: 100%;

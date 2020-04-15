@@ -24,3 +24,7 @@ export function formattedDate(datetime) {
 export function formattedPriceFromFlight(flight) {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: flight.currency }).format(flight.ticketPrice)
 }
+
+export function formattedPrice(price, currency) {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(price)
+}
