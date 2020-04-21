@@ -25,6 +25,7 @@ CREATE TABLE flight (
 
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(250) NOT NULL,
     first_name VARCHAR(250) NOT NULL,
     last_name VARCHAR(250) NOT NULL
 );
@@ -47,8 +48,8 @@ CREATE TABLE booking (
 --     CONSTRAINT fk_seat_flight_id FOREIGN KEY(flight_id) REFERENCES flight(id)
 -- );
 
-INSERT INTO user (first_name, last_name) VALUES
-    ('John', 'Rambo');
+INSERT INTO user (login, first_name, last_name) VALUES
+    ('jrambo', 'John', 'Rambo');
 
 
 INSERT INTO airport (name, city) VALUES
