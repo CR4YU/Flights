@@ -1,5 +1,6 @@
 package com.example.flightsservice.service;
 
+import com.example.flightsservice.api.EntityNotFoundException;
 import com.example.flightsservice.entity.Airport;
 import com.example.flightsservice.repository.AirportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,9 @@ public class AirportService {
 
     public List<Airport> findAll() {
         return airportRepository.findByOrderByNameAsc();
+    }
+
+    public Airport findByName(String name) {
+        return airportRepository.findByName(name).orElseThrow(() -> new EntityNotFoundException("Airport", name));
     }
 }

@@ -1,8 +1,8 @@
 package com.example.flightsservice.service;
 
+import com.example.flightsservice.api.EntityNotFoundException;
 import com.example.flightsservice.entity.Airport;
 import com.example.flightsservice.entity.Flight;
-import com.example.flightsservice.repository.AirportRepository;
 import com.example.flightsservice.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,20 +17,20 @@ public class FlightService {
     FlightRepository flightRepository;
 
     @Autowired
-    AirportRepository airportRepository;
+    AirportService airportService;
 
     public List<Flight> findAll() {
         return flightRepository.findAll();
     }
 
     public List<Flight> findByAirports(String orig, String dest) {
-        Airport originAirport = airportRepository.findByName(orig);
-        Airport destinationAirport = airportRepository.findByName(dest);
+        Airport originAirport = airportService.findByName(orig);
+        Airport destinationAirport = airportService.findByName(dest);
 
         return flightRepository.findByOriginAndDestinationOrderByDepartureAsc(originAirport, destinationAirport);
     }
 
-    public Optional<Flight> findById(Long id) {
-        return flightRepository.findById(id);
+    public Flight findById(Long id) {
+        return flightRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Flight", id));
     }
 }
