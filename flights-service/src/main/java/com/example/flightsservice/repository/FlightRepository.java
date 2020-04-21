@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Long> {
-    List<Flight> findAll();
+
     List<Flight> findByOriginAndDestinationOrderByDepartureAsc(Airport origin, Airport destination);
 }
