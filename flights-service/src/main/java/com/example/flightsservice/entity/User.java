@@ -4,21 +4,26 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
-public class Airport {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "login")
     @NotEmpty
-    private String name;
+    private String login;
 
-    @Column(name = "city")
+    @Column(name = "first_name")
     @NotEmpty
-    private String city;
+    private String firstName;
+
+    @Column(name = "last_name")
+    @NotEmpty
+    private String lastName;
 
 }
