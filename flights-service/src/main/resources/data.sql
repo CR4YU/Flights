@@ -35,6 +35,7 @@ CREATE TABLE booking (
     user_id INT NOT NULL,
     flight_id INT NOT NULL,
     seats VARCHAR(250) NOT NULL,
+    bundle VARCHAR(100) NOT NULL,
     CONSTRAINT fk_booking_user_id FOREIGN KEY(user_id) REFERENCES user(id),
     CONSTRAINT fk_booking_flight_id FOREIGN KEY(flight_id) REFERENCES flight(id)
 );

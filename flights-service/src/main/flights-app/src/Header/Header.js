@@ -1,13 +1,25 @@
 import React from 'react';
+import { withRouter } from 'react-router'
 import './Header.css';
 import logo from './plane.svg';
 import title from './title.svg';
 
 
-function Header() {
-    return (
+class Header extends React.Component {
+
+    state = {}
+
+    constructor(props) {
+        super(props);
+    }
+
+    goToHomePage = () => {
+        this.props.history.push('/');
+    }
+
+    render = () =>
         <header className="Header">
-            <div className="Header-title">
+            <div className="Header-title" onClick={this.goToHomePage}>
                 <img src={logo} className="Logo" alt="logo" />
                 <img src={title} className="Title" alt="title" />
             </div>
@@ -17,7 +29,7 @@ function Header() {
                 <a href="/login">Login</a>
             </div>
         </header>
-    );
+
 }
 
-export default Header;
+export default withRouter(Header);

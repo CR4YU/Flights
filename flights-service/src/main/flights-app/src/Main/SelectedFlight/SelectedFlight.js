@@ -64,7 +64,8 @@ class SelectedFlight extends React.Component {
         axios.post(`/api/booking`, {
             user: this.state.user,
             flightId: this.state.flight.id,
-            seats: this.state.selectedSeats
+            seats: this.state.selectedSeats,
+            bundle: this.state.bundle
         }).then(res => {
             this.props.history.push('/booking/' + res.data.id)
         }).catch(err => console.log(err));

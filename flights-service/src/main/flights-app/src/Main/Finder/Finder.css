@@ -4,3 +4,11 @@
     flex-direction: column;
     justify-content: center;
 }
+
+@media (max-width: 700px) {
+
+    .Finder {
+        justify-content: flex-start;
+    }
+
+}

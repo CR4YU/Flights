@@ -53,4 +53,9 @@ public class ApiController {
     public Booking createBooking(@RequestBody @Valid BookingRequestBody bookingRequestBody) {
         return bookingService.save(bookingRequestBody);
     }
+
+    @GetMapping("/booking/{id}")
+    public Booking bookingById(@PathVariable Long id) {
+        return bookingService.findById(id);
+    }
 }

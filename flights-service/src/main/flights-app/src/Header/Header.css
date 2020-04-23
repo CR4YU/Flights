@@ -20,6 +20,7 @@
 }
 
 .Header .Header-title {
+    cursor: pointer;
 }
 
 .Header .Header-functions {

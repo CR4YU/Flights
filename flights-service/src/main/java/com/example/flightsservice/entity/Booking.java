@@ -30,4 +30,8 @@ public class Booking {
     @NotEmpty
     private String seats;
 
+    @Column(name = "bundle")
+    @NotEmpty
+    private String bundle;
+
 }

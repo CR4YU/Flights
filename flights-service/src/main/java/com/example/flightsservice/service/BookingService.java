@@ -25,6 +25,7 @@ public class BookingService {
     public Booking save(BookingRequestBody bookingRequestBody) {
         User user = userService.findByLogin(bookingRequestBody.getUser());
         String seats = bookingRequestBody.getSeatsComaSeparated();
+        String bundle = bookingRequestBody.getBundle();
         Flight flight = flightService.findById(bookingRequestBody.getFlightId());
 
         flight.addTakenSeats(seats);
@@ -33,9 +34,14 @@ public class BookingService {
         booking.setFlight(flight);
         booking.setSeats(seats);
         booking.setUser(user);
+        booking.setBundle(bundle);
 
         bookingRepository.save(booking);
         return booking;
+    }
+
+    public Booking findById(Long id) {
+        return bookingRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Booking", id));
     }
 
 }

@@ -6,7 +6,7 @@ import icon_land from "./plane-land.png";
 
 
 const Flight = (props) =>
-    <div className="Flight" onClick={() => props.flightSelected(props.flight.id)}>
+    <div className="Flight" onClick={props.flightSelected? () => props.flightSelected(props.flight.id) : null}>
         <div className="Departure">
             <div className="Date">{formattedDate(props.flight.departure)}</div>
             <div className="Departure-time"><img src={icon_takeoff} className="Plane-icon-small"

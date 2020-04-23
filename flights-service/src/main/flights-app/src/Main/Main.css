@@ -9,6 +9,5 @@
 
 .Main .Middle-content {
     display: flex;
-    justify-content: center;
     flex-basis: 700px;
 }

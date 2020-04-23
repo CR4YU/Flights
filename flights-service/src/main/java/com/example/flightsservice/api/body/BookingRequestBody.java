@@ -20,6 +20,9 @@ public class BookingRequestBody {
     @NotEmpty
     private String[] seats;
 
+    @NotEmpty
+    private String bundle;
+
     @Pattern(regexp = "(\\d{1,2}[a-zA-Z],)*(\\d{1,2}[a-zA-Z])")
     public String getSeatsComaSeparated() {
         return Arrays.asList(seats).toString().replaceAll("\\[|\\]|[ ]","");
