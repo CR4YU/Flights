@@ -22,7 +22,6 @@ class Airports extends React.Component {
         const json = response.data;
         const airports = json.map(airport => { return {value: airport.name, label: airport.name}});
         this.setState({airports: airports})
-
     }
 
     handleChange = (event) => {
@@ -55,7 +54,7 @@ class Airports extends React.Component {
             <Select
                 className="Select"
                 options={this.state.airports}
-                onChange={(val)=> {this.handleChange({target: { name:direction, value: val.value }})}}
+                onChange={(val) => {this.handleChange({target: { name:direction, value: val.value }})}}
                 placeholder={direction.replace(/^\w/, c => c.toUpperCase())}
             />
         )

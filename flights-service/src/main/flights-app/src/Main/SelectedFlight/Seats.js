@@ -21,7 +21,7 @@ class Seats extends React.Component {
         row.push(<div className="row-number">{rowNum}</div>);
         row.push(<div className="window"/>);
         for (let i = 0; i < columns; i++) {
-            const seatTaken = takenSeats.includes((rowNum)+letters[i]);
+            const seatTaken = takenSeats.includes((rowNum) + letters[i]);
             const onClick = seatTaken? null : (event) => {this.switchSeatColor(event); this.props.handleSeatClicked(rowNum+letters[i]);};
             row.push(
                 <div className={"seat " + (seatTaken? "seat-taken" : "seat-free")}
@@ -39,7 +39,7 @@ class Seats extends React.Component {
         const takenSeats = this.props.flight.takenSeats.split(',');
 
         for (let i = 0; i < this.props.flight.numSeatsRows; i++) {
-            rows.push(this.generateRow(this.props.flight.numSeatsColumns, i+1, takenSeats))
+            rows.push(this.generateRow(this.props.flight.numSeatsColumns, i + 1, takenSeats))
         }
 
         return (
@@ -51,9 +51,5 @@ class Seats extends React.Component {
     }
 
 }
-
-
-
-
 
 export default Seats;

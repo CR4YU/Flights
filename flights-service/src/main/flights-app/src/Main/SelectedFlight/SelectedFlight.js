@@ -1,26 +1,29 @@
 import React from 'react';
-import { formattedPriceFromFlight, formattedPrice, timeDifference, formattedDate, timeFromDate } from './../../utils/utils';
 import './SelectedFlight.css'
-import Flight from './Flight';
+import Flight from './../Flight/Flight';
 import Bundles from './Bundles';
-import Seats from './Seats'
+import Seats from './Seats';
+import Summary from './Summary';
 import axios from "axios";
 
 
 class SelectedFlight extends React.Component {
 
     state = {
+        user: "jrambo",
         flight: null,
-        bundle: '',
+        bundle: null,
         selectedSeats: [],
         bundlePrice: 0,
-        totalPrice: 0
+        totalPrice: 0,
+        continueEnabled: false
     };
 
     constructor(props) {
         super(props);
         this.handleSeatClicked = this.handleSeatClicked.bind(this);
         this.bundleSelected = this.bundleSelected.bind(this);
+        this.bookFlight = this.bookFlight.bind(this);
     }
 
     componentDidMount() {
@@ -29,22 +32,23 @@ class SelectedFlight extends React.Component {
 
     handleSeatClicked(code) {
         this.setState(state => {
-            if (state.selectedSeats.includes(code))
-                return {
+            return (state.selectedSeats.includes(code))?
+                {
                     selectedSeats: state.selectedSeats.filter(s => s !== code),
-                    totalPrice: (state.selectedSeats.length - 1) * state.bundlePrice
-            };
-
-            return {
-                selectedSeats: [...state.selectedSeats, code],
-                totalPrice: (state.selectedSeats.length + 1) * state.bundlePrice
-            }
+                    totalPrice: (state.selectedSeats.length - 1) * state.bundlePrice,
+                    continueEnabled: (state.selectedSeats.length - 1) && !!state.bundle
+                } :
+                {
+                    selectedSeats: [...state.selectedSeats, code],
+                    totalPrice: (state.selectedSeats.length + 1) * state.bundlePrice,
+                    continueEnabled: !!state.bundle
+                };
         });
     }
 
     bundleSelected(name, price) {
         this.setState(state => {
-            return {bundle: name, bundlePrice: price, totalPrice: state.selectedSeats.length * price}}
+            return {bundle: name, bundlePrice: price, totalPrice: state.selectedSeats.length * price, continueEnabled: state.selectedSeats.length}}
             );
     }
 
@@ -55,9 +59,17 @@ class SelectedFlight extends React.Component {
         this.setState({flight: json})
     }
 
-    async bookFlight() {
-        // axios.post(`/api/`)
+    bookFlight() {
+        console.log(this.props)
+        axios.post(`/api/booking`, {
+            user: this.state.user,
+            flightId: this.state.flight.id,
+            seats: this.state.selectedSeats
+        }).then(res => {
+            this.props.history.push('/booking/' + res.data.id)
+        }).catch(err => console.log(err));
     }
+
 
     render = () => {
         const flight = this.state.flight;
@@ -68,14 +80,8 @@ class SelectedFlight extends React.Component {
                     <Flight flight={flight}/>
                     <Bundles flight={flight} bundleSelected={this.bundleSelected}/>
                     <Seats flight={flight} handleSeatClicked={this.handleSeatClicked}/>
-                    <h3>Summary</h3>
-                    <div className="summary">
-                        <div className="summary-detail-row">
-                            <div className="summary-detail-left"> {this.state.selectedSeats.length} x {this.state.bundle}</div>
-                            <div className="summary-detail-right">{formattedPrice(this.state.totalPrice, flight.currency)}</div>
-                        </div>
-                    </div>
-                    <button className="button-continue" onClick={null}>CONTINUE</button>
+                    <Summary {...this.state}/>
+                    <button className={"button-continue" + (this.state.continueEnabled? "" : " disabled")} disabled={!this.state.continueEnabled}  onClick={this.bookFlight}>CONTINUE</button>
                 </div>
             );
         } else {

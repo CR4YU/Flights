@@ -23,7 +23,7 @@ class Finder extends React.Component {
         return (
             <div className="Finder">
                 <Airports handleSearchFlights={this.handleSearchFlights}/>
-                <Flights origin={this.state.origin} destination={this.state.destination}/>
+                <Flights {...this.state}/>
             </div>
         );
     }

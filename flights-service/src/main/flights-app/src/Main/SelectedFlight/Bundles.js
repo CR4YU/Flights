@@ -15,7 +15,6 @@ class Bundles extends React.Component{
 
     constructor(props) {
         super(props);
-
         this.bundleSelected = this.bundleSelected.bind(this);
     }
 
@@ -59,10 +58,6 @@ class Bundles extends React.Component{
                 <div className="bundle-price">{formattedPrice(price, this.props.flight.currency)}</div>
             </div>
         </div>
-
-}
-
-function setBundleSelected(event){
 
 }
 

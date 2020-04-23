@@ -4,11 +4,8 @@
     box-sizing: border-box;
     flex-direction: column;
     padding: 20px;
-    background: #f6f7fa;
-    border-radius: 5px;
+    background: #ededed;
 }
-
-
 
 .Airports .Airports-select {
     width: 100%;
@@ -68,5 +65,4 @@
     .Airports .direction {
         display: none;
     }
-
 }

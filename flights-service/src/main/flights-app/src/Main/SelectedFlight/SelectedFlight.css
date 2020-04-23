@@ -7,71 +7,6 @@
     padding: 10px 15px;
 }
 
-.Selected-flight .Flight {
-    background: #ededed;
-    height: 100px;
-    width: 100%;
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding: 10px 15px;
-    color: #434343;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
-}
-
-
-
-.Selected-flight .Departure {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 150px;
-    height: 80px;
-}
-
-.Selected-flight .Flight-path {
-    color: #979797;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 50%;
-}
-
-.Selected-flight .Departure-time {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    font-size: 25px;
-}
-
-.Selected-flight .Departure-airport {
-    color: #979797;
-    font-size: 10px;
-    text-align: center;
-}
-
-.Selected-flight .Plane-icon {
-    height: 60px;
-}
-
-.Selected-flight .Plane-icon-small {
-    display: none;
-    height: 30px;
-}
-
-.Selected-flight .Flight-time {
-    border-bottom: darkgrey;
-    border-bottom-style: dotted;
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
-}
-
 .Selected-flight .bundles {
     display: flex;
 
@@ -114,7 +49,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
 }
 
 .Selected-flight .bundle-features {
@@ -127,7 +61,7 @@
 }
 
 .Selected-flight .bundle-features li {
-margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .Selected-flight .bundle-price {
@@ -197,12 +131,6 @@ margin-bottom: 10px;
     margin: 5px;
 }
 
-.Selected-flight .summary {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
 .Selected-flight .summary-detail-row {
     width: 100%;
     display: flex;
@@ -223,28 +151,25 @@ margin-bottom: 10px;
     cursor: pointer;
 }
 
+.Selected-flight .button-continue.disabled {
+    background-color: #444444;
+    cursor: auto;
+}
+
 .Selected-flight .summary-detail-right {
     font-weight: bold;
 }
 
-.Selected-flight .button-continue:hover {
+.Selected-flight .button-continue:hover:enabled {
     background: #c34fa4;
 }
 
 
 @media (max-width: 700px) {
 
-    .Selected-flight .Plane-icon-small {
-        display: block;
-    }
-
     .Selected-flight .button-continue {
         font-size: 20px;
         width: 100%;
-    }
-
-    .Selected-flight .Plane-icon {
-        display: none;
     }
 
     .Selected-flight .bundles {

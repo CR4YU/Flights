@@ -3,39 +3,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-margin-top: 10px;
+    margin-top: 20px;
 }
 
-.Flights .Flight {
-    /* No Link styling */
-    color:inherit;
-    text-decoration: none;
-    outline: none;
-    /*******************/
-
-    background: #f6f7fa;
-    height: 100px;
-    width: 100%;
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 10px 15px;
-    color: #434343;
-}
-
-.Flights .Flight-path {
-    color: #979797;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 40%;
-}
-
-.Flights .No-flights {
+.Flights .flights-placeholder-message {
     color: #eeeff2;
     text-align: center;
     padding: 30px;
@@ -43,51 +14,10 @@ margin-top: 10px;
     font-size: 30px;
 }
 
-
 .Flights .Flight:hover {
     background: #f9f9f9;
     cursor: pointer;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
-}
-
-
-.Flights .Departure {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 150px;
-    height: 80px;
-}
-
-.Flights .Departure-time {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    font-size: 25px;
-}
-
-.Flights .Departure-airport {
-    color: #979797;
-    font-size: 10px;
-    text-align: center;
-}
-
-.Flights .Plane-icon {
-    height: 60px;
-}
-
-.Flights .Plane-icon-small {
-    display: none;
-    height: 30px;
-}
-
-.Flights .Flight-time {
-    border-bottom: darkgrey;
-    border-bottom-style: dotted;
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
 }
 
 @media (max-width: 700px) {
@@ -99,28 +29,4 @@ margin-top: 10px;
         margin-bottom: 1px;
     }
 
-    .Flights .Flight-time {
-
-    }
-
-    .Flights .Flight-path {
-        width: 30%;
-    }
-
-
-    .Flights .Plane-icon-small {
-        display: block;
-    }
-
-    .Flights .Date-price {
-        font-size: 15px
-    }
-
-    .Flights .Departure-time {
-
-    }
-
-    .Flights .Plane-icon {
-        display: none;
-    }
 }
