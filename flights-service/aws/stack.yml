@@ -91,6 +91,65 @@ Resources:
           Value: dev
           PropagateAtLaunch: True
 
+  NatA:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: '|GetAtt|EipA|AllocationId'
+      SubnetId: subnet-08f24cd4fa653f784
+
+  NatB:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: '|GetAtt|EipB|AllocationId'
+      SubnetId: subnet-08a67d21d4dc38d8a
+
+  EipA:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+
+  EipB:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+
+  RouteTableA:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: vpc-0b22f2c3b58b5f60a
+
+  RouteTableB:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: vpc-0b22f2c3b58b5f60a
+
+  SubnetRouteTableAssociationA:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: subnet-0844e8ddb642e360f
+      RouteTableId: '|Ref|RouteTableA'
+
+  SubnetRouteTableAssociationB:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: subnet-0f8f952fa7298e790
+      RouteTableId: '|Ref|RouteTableB'
+
+  RouteToNatA:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: '|Ref|RouteTableA'
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: '|Ref|NatA'
+
+  RouteToNatB:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: '|Ref|RouteTableB'
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: '|Ref|NatB'
+
+
 Outputs:
   ProjectFlights:
     Description: Web App ALB DNS Name
@@ -98,4 +157,4 @@ Outputs:
       Fn::Join:
         - ''
         - - "http://"
-          - Fn::GetAtt: LoadBalancer.DNSName
+          - '|GetAtt|LoadBalancer|DNSName'
