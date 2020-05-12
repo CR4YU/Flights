@@ -14,11 +14,7 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User", id));
-    }
-
     public User findByLogin(String login) {
-        return userRepository.findByLogin(login).orElseThrow(() -> new EntityNotFoundException("User", login));
+        return Optional.ofNullable(userRepository.findByLogin(login)).orElseThrow(() -> new EntityNotFoundException("User", login));
     }
 }

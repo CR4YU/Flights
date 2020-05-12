@@ -12,7 +12,7 @@ const Flight = (props) =>
             <div className="Departure-time"><img src={icon_takeoff} className="Plane-icon-small"
                                                  alt="icon takeoff"/>{timeFromDate(props.flight.departure)}
             </div>
-            <div className="Departure-airport">{props.flight.origin.name}</div>
+            <div className="Departure-airport">{props.flight.origin}</div>
         </div>
         <div className="Flight-path">
             <img src={icon_takeoff} className="Plane-icon" alt="icon takeoff"/>
@@ -23,7 +23,7 @@ const Flight = (props) =>
             <div className="Date">{formattedDate(props.flight.arrival)}</div>
             <div className="Departure-time"><img src={icon_land} className="Plane-icon-small"
                                                  alt="icon land"/>{timeFromDate(props.flight.arrival)}</div>
-            <div className="Departure-airport">{props.flight.destination.name}</div>
+            <div className="Departure-airport">{props.flight.destination}</div>
         </div>
         { (props.showPrice) ? <div className="Price">{formattedPriceFromFlight(props.flight)}</div> : null }
     </div>;

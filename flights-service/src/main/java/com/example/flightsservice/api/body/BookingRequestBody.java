@@ -15,7 +15,7 @@ public class BookingRequestBody {
     private String user;
 
     @NotNull
-    private long flightId;
+    private String flightId;
 
     @NotEmpty
     private String[] seats;

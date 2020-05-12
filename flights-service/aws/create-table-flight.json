@@ -1,0 +1,29 @@
+{
+  "TableName": "Flight",
+  "KeySchema": [
+    { "AttributeName": "Id", "KeyType": "HASH" }
+  ],
+  "AttributeDefinitions": [
+    { "AttributeName": "Id", "AttributeType": "S" },
+    { "AttributeName": "OriginAndDestination", "AttributeType": "S" },
+    { "AttributeName": "Departure", "AttributeType": "S" }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 5,
+    "WriteCapacityUnits": 5
+  },
+  "GlobalSecondaryIndexes": [{
+    "IndexName": "FlightGSI1",
+    "KeySchema": [
+      { "AttributeName": "OriginAndDestination", "KeyType": "HASH" },
+      { "AttributeName": "Departure", "KeyType": "RANGE" }
+    ],
+    "Projection": {
+      "ProjectionType": "ALL"
+    },
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 5,
+      "WriteCapacityUnits": 5
+    }
+  }]
+}

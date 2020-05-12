@@ -3,16 +3,17 @@ package com.example.flightsservice.api;
 import com.example.flightsservice.api.body.BookingRequestBody;
 import com.example.flightsservice.entity.Airport;
 import com.example.flightsservice.entity.Booking;
+
 import com.example.flightsservice.entity.Flight;
 import com.example.flightsservice.service.AirportService;
 import com.example.flightsservice.service.BookingService;
 import com.example.flightsservice.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api")
@@ -34,18 +35,13 @@ public class ApiController {
         return airportService.findAll();
     }
 
-    @GetMapping("/flights")
-    public List<Flight> allFlights() {
-        return flightService.findAll();
-    }
-
     @GetMapping("/flights/find")
     public List<Flight> flightsByAirports(@RequestParam String orig, @RequestParam String dest) {
         return flightService.findByAirports(orig, dest);
     }
 
     @GetMapping("/flights/{id}")
-    public Flight flightById(@PathVariable Long id) {
+    public Flight flightById(@PathVariable String id) {
         return flightService.findById(id);
     }
 
@@ -55,7 +51,7 @@ public class ApiController {
     }
 
     @GetMapping("/booking/{id}")
-    public Booking bookingById(@PathVariable Long id) {
+    public Booking bookingById(@PathVariable String id) {
         return bookingService.findById(id);
     }
 }

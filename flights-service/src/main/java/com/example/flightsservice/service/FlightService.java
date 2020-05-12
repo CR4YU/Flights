@@ -1,7 +1,7 @@
 package com.example.flightsservice.service;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.example.flightsservice.api.EntityNotFoundException;
-import com.example.flightsservice.entity.Airport;
 import com.example.flightsservice.entity.Flight;
 import com.example.flightsservice.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,23 +14,32 @@ import java.util.Optional;
 public class FlightService {
 
     @Autowired
+    private DynamoDBMapper dynamoDBMapper;
+
+    @Autowired
     FlightRepository flightRepository;
 
     @Autowired
     AirportService airportService;
 
-    public List<Flight> findAll() {
-        return flightRepository.findAll();
-    }
+
 
     public List<Flight> findByAirports(String orig, String dest) {
-        Airport originAirport = airportService.findByName(orig);
-        Airport destinationAirport = airportService.findByName(dest);
+        List<Flight> flights = flightRepository.findByOriginAndDestinationOrderByDepartureAsc(orig, dest);
 
-        return flightRepository.findByOriginAndDestinationOrderByDepartureAsc(originAirport, destinationAirport);
+        for (Flight flight : flights) {
+            flight.setOrigin(flight.getOriginAndDestination().split(",")[0]);
+            flight.setDestination(flight.getOriginAndDestination().split(",")[1]);
+        }
+
+        return flights;
     }
 
-    public Flight findById(Long id) {
-        return flightRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Flight", id));
+    public Flight findById(String id) {
+        Flight flight = Optional.ofNullable(flightRepository.findById(id)).orElseThrow(() -> new EntityNotFoundException("Flight", id));
+        flight.setOrigin(flight.getOriginAndDestination().split(",")[0]);
+        flight.setDestination(flight.getOriginAndDestination().split(",")[1]);
+
+        return flight;
     }
 }

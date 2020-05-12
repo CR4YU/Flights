@@ -24,6 +24,7 @@ class SelectedFlight extends React.Component {
         this.handleSeatClicked = this.handleSeatClicked.bind(this);
         this.bundleSelected = this.bundleSelected.bind(this);
         this.bookFlight = this.bookFlight.bind(this);
+        console.log("selected")
     }
 
     componentDidMount() {
@@ -77,7 +78,7 @@ class SelectedFlight extends React.Component {
         if (flight) {
             return (
                 <div className="Selected-flight">
-                    <h2>YOUR FLIGHT TO {flight.destination.city.toUpperCase()}</h2>
+                    <h2>YOUR FLIGHT TO {flight.destination.toUpperCase()}</h2>
                     <Flight flight={flight}/>
                     <Bundles flight={flight} bundleSelected={this.bundleSelected}/>
                     <Seats flight={flight} handleSeatClicked={this.handleSeatClicked}/>

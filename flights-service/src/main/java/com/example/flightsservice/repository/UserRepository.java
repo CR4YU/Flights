@@ -1,13 +1,17 @@
 package com.example.flightsservice.repository;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.example.flightsservice.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public class UserRepository  {
 
-    Optional<User> findByLogin(String login);
+    @Autowired
+    private DynamoDBMapper dynamoDBMapper;
+
+    public User findByLogin(String login) {
+        return dynamoDBMapper.load(User.class, login);
+    }
 }

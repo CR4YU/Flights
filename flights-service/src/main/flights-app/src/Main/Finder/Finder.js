@@ -10,8 +10,8 @@ class Finder extends React.Component {
         destination: ''
     };
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.handleSearchFlights = this.handleSearchFlights.bind(this);
     }
 

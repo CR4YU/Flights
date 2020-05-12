@@ -1,14 +1,35 @@
 package com.example.flightsservice.repository;
 
-import com.example.flightsservice.entity.Airport;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.example.flightsservice.entity.Flight;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface FlightRepository extends JpaRepository<Flight, Long> {
+public class FlightRepository {
 
-    List<Flight> findByOriginAndDestinationOrderByDepartureAsc(Airport origin, Airport destination);
+    @Autowired
+    private DynamoDBMapper dynamoDBMapper;
+
+    public Flight findById(String id) {
+        return dynamoDBMapper.load(Flight.class, id);
+    }
+
+    public List<Flight> findByOriginAndDestinationOrderByDepartureAsc(String origin, String destination){
+        String originAndDestination = origin + "," + destination;
+
+        Flight flight = new Flight();
+        flight.setOriginAndDestination(originAndDestination);
+
+        DynamoDBQueryExpression<Flight> expression = new DynamoDBQueryExpression<Flight>()
+                .withIndexName("FlightGSI1")
+                .withConsistentRead(false)
+                .withHashKeyValues(flight);
+
+        List<Flight> results = dynamoDBMapper.query(Flight.class, expression);
+        return results;
+    }
 }
