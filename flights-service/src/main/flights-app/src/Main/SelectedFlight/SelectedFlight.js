@@ -24,7 +24,6 @@ class SelectedFlight extends React.Component {
         this.handleSeatClicked = this.handleSeatClicked.bind(this);
         this.bundleSelected = this.bundleSelected.bind(this);
         this.bookFlight = this.bookFlight.bind(this);
-        console.log("selected")
     }
 
     componentDidMount() {

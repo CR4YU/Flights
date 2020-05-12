@@ -1,29 +1,56 @@
 package com.example.flightsservice.entity;
 
-import lombok.Data;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
-@Entity
-@Data
+@DynamoDBTable(tableName="User")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(name = "login")
-    @NotEmpty
     private String login;
-
-    @Column(name = "first_name")
     @NotEmpty
     private String firstName;
-
-    @Column(name = "last_name")
     @NotEmpty
     private String lastName;
+    @NotEmpty
+    private String password;
 
+    @DynamoDBHashKey(attributeName = "Login")
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    @DynamoDBAttribute(attributeName = "FirstName")
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @DynamoDBAttribute(attributeName = "LastName")
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @DynamoDBAttribute(attributeName = "Password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

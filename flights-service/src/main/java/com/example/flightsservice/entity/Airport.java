@@ -1,24 +1,21 @@
 package com.example.flightsservice.entity;
 
-import lombok.Data;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
-@Entity
-@Data
+@DynamoDBTable(tableName="Airport")
 public class Airport {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "name")
-    @NotEmpty
     private String name;
 
-    @Column(name = "city")
-    @NotEmpty
-    private String city;
+    @DynamoDBHashKey(attributeName = "Name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }
