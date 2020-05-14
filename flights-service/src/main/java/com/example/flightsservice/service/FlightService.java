@@ -42,4 +42,8 @@ public class FlightService {
 
         return flight;
     }
+
+    public Flight save(Flight flight) {
+        return flightRepository.save(flight);
+    }
 }

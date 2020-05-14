@@ -33,6 +33,7 @@ public class BookingService {
         Flight flight = flightService.findById(bookingRequestBody.getFlightId());
 
         flight.addTakenSeats(seats);
+        flightService.save(flight);
 
         Booking booking = new Booking();
         booking.setFlight(flight);

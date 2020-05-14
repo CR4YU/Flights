@@ -32,4 +32,9 @@ public class FlightRepository {
         List<Flight> results = dynamoDBMapper.query(Flight.class, expression);
         return results;
     }
+
+    public Flight save(Flight flight) {
+        dynamoDBMapper.save(flight);
+        return flight;
+    }
 }
