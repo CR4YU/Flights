@@ -150,6 +150,87 @@ Resources:
       NatGatewayId: '|Ref|NatB'
 
 
+
+
+  DDBTableAirport:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: 'Airport'
+      AttributeDefinitions:
+        - AttributeName: "Name"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "Name"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+  DDBTableUser:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: 'User'
+      AttributeDefinitions:
+        - AttributeName: "Login"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "Login"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+
+
+  DDBTableBooking:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: 'Booking'
+      AttributeDefinitions:
+        - AttributeName: "Id"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "Id"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+
+
+
+  DDBTableFlight:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: 'Flight'
+      AttributeDefinitions:
+        - AttributeName: "Id"
+          AttributeType: "S"
+        - AttributeName: "OriginAndDestination"
+          AttributeType: "S"
+        - AttributeName: "Departure"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "Id"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      GlobalSecondaryIndexes:
+        - IndexName: "FlightGSI1"
+          KeySchema:
+            - AttributeName: "OriginAndDestination"
+              KeyType: "HASH"
+            - AttributeName: "Departure"
+              KeyType: "RANGE"
+          Projection:
+            ProjectionType: "ALL"
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+
+
+
 Outputs:
   ProjectFlights:
     Description: Web App ALB DNS Name
