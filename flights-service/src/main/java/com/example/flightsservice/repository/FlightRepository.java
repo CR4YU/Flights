@@ -18,8 +18,7 @@ public class FlightRepository {
         return dynamoDBMapper.load(Flight.class, id);
     }
 
-    public List<Flight> findByOriginAndDestinationOrderByDepartureAsc(String origin, String destination){
-        String originAndDestination = origin + "," + destination;
+    public List<Flight> findByOriginAndDestinationOrderByDepartureAsc(String originAndDestination){
 
         Flight flight = new Flight();
         flight.setOriginAndDestination(originAndDestination);

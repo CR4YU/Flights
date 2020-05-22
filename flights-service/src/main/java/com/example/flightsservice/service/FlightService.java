@@ -25,7 +25,8 @@ public class FlightService {
 
 
     public List<Flight> findByAirports(String orig, String dest) {
-        List<Flight> flights = flightRepository.findByOriginAndDestinationOrderByDepartureAsc(orig, dest);
+        String originAndDestination = orig + "," + dest;
+        List<Flight> flights = flightRepository.findByOriginAndDestinationOrderByDepartureAsc(originAndDestination);
 
         for (Flight flight : flights) {
             flight.setOrigin(flight.getOriginAndDestination().split(",")[0]);

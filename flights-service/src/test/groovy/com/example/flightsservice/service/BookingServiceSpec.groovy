@@ -32,7 +32,7 @@ class BookingServiceSpec extends Specification {
         def booking = bookingService.findById(EXAMPLE_ID)
 
         then:
-        1 * bookingRepository.findById(EXAMPLE_ID) >> { id -> new Booking(id: EXAMPLE_ID)}
+        1 * bookingRepository.findById(EXAMPLE_ID) >> {String id -> new Booking(id: id)}
         booking.id == EXAMPLE_ID
 
     }
