@@ -20,7 +20,7 @@ class Airports extends React.Component {
     async fetchAirports() {
         const response = await axios.get('https://iwg9yzn46c.execute-api.us-east-1.amazonaws.com/test/hello');
         const json = response.data.message;
-        const airports = json.map(airport => { return {value: airport.name, label: airport.name}});
+        const airports = json.map(airport => { return {value: airport.Name, label: airport.Name}});
         this.setState({airports: airports})
     }
 
