@@ -1,0 +1,63 @@
+.header {
+  background-color: #1818a0;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  color: white;
+  padding: 1em;
+}
+
+.logo {
+  height: 40px;
+  pointer-events: none;
+}
+
+.title {
+  height: 40px;
+}
+
+.header-title {
+  cursor: pointer;
+}
+
+.header-functions {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-functions a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.header-function-separator {
+  background: #d6d6d6;
+  width: 1px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header .logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+@media (max-width: 800px) {
+  .header .title {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
+}

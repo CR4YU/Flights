@@ -1,0 +1,27 @@
+.footer {
+  height: 60px;
+  font-size: 10px;
+  color: #555555;
+}
+
+.footer-upper-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-links {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer a {
+  color: dodgerblue;
+}
+
+.footer hr {
+  margin: 0;
+  padding: 0;
+}
