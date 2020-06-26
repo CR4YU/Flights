@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /*background-image: url("plane-interior.jpg");*/
+  /*background-size: cover;*/
+  min-height: 500px;
+}
+
+.middle-content {
+  display: flex;
+  flex-basis: 700px;
+}
+
+app-finder {
+  width: 100%;
+}
