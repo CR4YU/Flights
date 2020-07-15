@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AirportsService} from "../../../shared/airports.service";
 
 @Component({
   selector: 'app-airports',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AirportsComponent implements OnInit {
 
-  airports = ["Wroclaw", "Warsaw"]
+  airports = [];
 
-  constructor() { }
+  constructor(private airportsService: AirportsService) { }
 
   ngOnInit(): void {
+    this.airports = this.airportsService.fetchAirports();
   }
 
 }

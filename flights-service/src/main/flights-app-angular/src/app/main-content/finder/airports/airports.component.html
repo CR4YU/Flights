@@ -1,22 +1,24 @@
 <div class="airports">
   <h2>FLIGHT FINDER</h2>
   <div class="airports-select">
-  <mat-form-field>
+    <mat-form-field class="select">
+      <mat-select >
+        <mat-option *ngFor="let airport of airports" [value]="airport">
+          {{airport.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <mat-select class="select">
-      <mat-option *ngFor="let airport of airports" [value]="airport">
-        {{airport}}
-      </mat-option>
-    </mat-select>
     <span class="direction">&#x27A4;</span>
 
-    <mat-select class="select">
-      <mat-option *ngFor="let airport of airports" [value]="airport">
-        {{airport}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button class="button-search" >SEARCH</button>
+    <mat-form-field class="select">
+      <mat-select >
+        <mat-option *ngFor="let airport of airports" [value]="airport">
+          {{airport.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button class="button-search" >SEARCH</button>
   </div>
 </div>
 

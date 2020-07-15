@@ -11,6 +11,7 @@ import { AirportsComponent } from './main-content/finder/airports/airports.compo
 import { FlightsComponent } from './main-content/finder/flights/flights.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from "@angular/material/select";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MatSelectModule} from "@angular/material/select";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
